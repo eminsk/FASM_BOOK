@@ -22,7 +22,7 @@ section '.rdata' data readable
 section '.text' code readable executable
 main:
     push rbx
-    sub rsp, 56
+    sub rsp, 48
 
     lea rcx, [szTitle]
     call [printf]
@@ -64,10 +64,8 @@ main:
     mov [rsp + 32], rax
     call [printf]
 
-    add rsp, 56
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

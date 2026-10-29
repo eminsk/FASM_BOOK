@@ -22,7 +22,7 @@ main:
     push rbx
     push rsi
     push rdi
-    sub rsp, 40
+    sub rsp, 48
 
     lea rcx, [szTitle]
     call [printf]
@@ -77,12 +77,8 @@ main:
     lea r8d, [rax + rax*4 + 100]  ; result = 160
     call [printf]
 
-    add rsp, 40
-    pop rdi
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

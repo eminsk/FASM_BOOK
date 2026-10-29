@@ -23,7 +23,7 @@ main:
     push rbx
     push rsi
     push rdi
-    sub rsp, 48
+    sub rsp, 64
 
     lea rcx, [szTitle]
     call [printf]
@@ -70,12 +70,8 @@ main:
     mov edx, eax
     call [printf]
 
-    add rsp, 48
-    pop rdi
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

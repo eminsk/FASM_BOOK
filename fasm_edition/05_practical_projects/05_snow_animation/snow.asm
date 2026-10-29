@@ -32,7 +32,7 @@ main:
     push rbx
     push rsi
     push rdi
-    sub rsp, 56
+    sub rsp, 48
 
     lea rcx, [szTitle]
     call [printf]
@@ -118,12 +118,8 @@ main:
     lea rcx, [szDone]
     call [printf]
 
-    add rsp, 56
-    pop rdi
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 get_random:
     mov eax, [rng_seed]

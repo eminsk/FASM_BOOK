@@ -76,11 +76,8 @@ main:
     ; 3-й аргумент (R8D) уже содержит Height
     call [printf]
 
-    add rsp, 56
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 ; ------------------------------------------------------------------------------
 ; "Метод": Rectangle_GetMetrics(Rectangle* this [RCX])

@@ -59,11 +59,8 @@ main:
     call [printf]
 
 .skip_pass:
-    add rsp, 56
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 ; ------------------------------------------------------------------------------
 ; Функция: sum6(a, b, c, d, e, f)

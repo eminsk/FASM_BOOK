@@ -52,11 +52,8 @@ main:
     lea rcx, [szSwap64Fmt]
     call [printf]
 
-    add rsp, 56
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

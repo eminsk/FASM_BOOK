@@ -52,15 +52,11 @@ main:
     mov edx, eax            ; 0x240
     mov r8d, ebx            ; 6
     mov r9d, esi            ; 9
-    mov dword [rsp + 32], edi ; 2
+    mov [rsp + 32], rdi ; 2
     call [printf]
 
-    add rsp, 48
-    pop rdi
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

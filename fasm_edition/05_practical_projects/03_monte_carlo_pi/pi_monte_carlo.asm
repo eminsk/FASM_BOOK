@@ -87,12 +87,8 @@ main:
     mov [rsp + 32], rax
     call [printf]
 
-    add rsp, 48
-    pop rdi
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 next_random_float:
     mov eax, [rng_state]

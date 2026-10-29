@@ -25,24 +25,19 @@ for /r "%~dp0" %%f in (*.asm) do (
     set "SRC=%%f"
     set "DIR=%%~dpf"
     set "NAME=%%~nf"
+    set "OUT_EXT=exe"
+    if "!NAME!"=="fast_math" set "OUT_EXT=dll"
     
     echo [*] Assembling !NAME!.asm ...
-    "%FASM_BIN%" "!SRC!" "!DIR!!NAME!.exe" > nul 2>&1
+    "%FASM_BIN%" "!SRC!" "!DIR!!NAME!.!OUT_EXT!" > nul 2>&1
     if not errorlevel 1 (
-        echo     [+] SUCCESS: !NAME!.exe
+        echo     [+] SUCCESS: !NAME!.!OUT_EXT!
         set /a SUCCESS_COUNT+=1
     ) else (
-        rem Check if it is a DLL format (e.g. fast_math)
-        "%FASM_BIN%" "!SRC!" "!DIR!!NAME!.dll" > nul 2>&1
-        if not errorlevel 1 (
-            echo     [+] SUCCESS: !NAME!.dll ^(DLL^)
-            set /a SUCCESS_COUNT+=1
-        ) else (
-            color 0C
-            echo     [-] FAILED:  !NAME!.asm
-            "%FASM_BIN%" "!SRC!" "!DIR!!NAME!.exe"
-            set /a FAIL_COUNT+=1
-        )
+        color 0C
+        echo     [-] FAILED:  !NAME!.asm
+        "%FASM_BIN%" "!SRC!" "!DIR!!NAME!.!OUT_EXT!"
+        set /a FAIL_COUNT+=1
     )
 )
 

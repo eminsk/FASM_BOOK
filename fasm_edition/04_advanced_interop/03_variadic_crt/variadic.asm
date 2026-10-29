@@ -50,10 +50,8 @@ main:
 
     call [printf]
 
-    add rsp, 64
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

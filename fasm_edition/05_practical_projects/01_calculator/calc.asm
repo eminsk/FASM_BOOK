@@ -24,7 +24,7 @@ main:
     push rbx
     push rsi
     push rdi
-    sub rsp, 72
+    sub rsp, 64
 
     lea rcx, [szTitle]
     call [printf]
@@ -65,12 +65,8 @@ main:
     mov r8d, eax
     call [printf]
 
-    add rsp, 72
-    pop rdi
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 ; ------------------------------------------------------------------------------
 ; int parse_simple_expression(const char* str [RCX])
@@ -79,7 +75,7 @@ parse_simple_expression:
     push rbx
     push rsi
     push rdi
-    sub rsp, 40
+    sub rsp, 48
 
     mov rsi, rcx
 
@@ -153,7 +149,7 @@ parse_simple_expression:
     xor eax, eax
 
 .done:
-    add rsp, 40
+    add rsp, 48
     pop rdi
     pop rsi
     pop rbx

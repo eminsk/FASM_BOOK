@@ -28,7 +28,7 @@ section '.rdata' data readable
 section '.text' code readable executable
 main:
     push rbx
-    sub rsp, 56
+    sub rsp, 48
 
     lea rcx, [szTitle]
     call [printf]
@@ -64,10 +64,8 @@ main:
     movapd xmm1, xmm0
     call [printf]
 
-    add rsp, 56
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 ; ------------------------------------------------------------------------------
 ; double cylinder_volume(double r [XMM0], double h [XMM1])

@@ -48,11 +48,8 @@ main:
     jmp .test_loop
 
 .done:
-    add rsp, 40
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 ; ------------------------------------------------------------------------------
 ; Функция dispatch_command(cmd in ECX)

@@ -27,7 +27,7 @@ section '.bss' readable writeable
 section '.text' code readable executable
 main:
     push rbx
-    sub rsp, 88
+    sub rsp, 64
 
     lea rcx, [szTitle]
     call [printf]
@@ -63,10 +63,8 @@ main:
     movapd xmm1, xmm1
     call [printf]
 
-    add rsp, 88
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

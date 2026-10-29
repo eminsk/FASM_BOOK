@@ -87,11 +87,8 @@ main:
     jmp .loop_start
 
 .loop_done:
-    add rsp, 40
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 section '.idata' import data readable
     library kernel32, 'KERNEL32.DLL', \

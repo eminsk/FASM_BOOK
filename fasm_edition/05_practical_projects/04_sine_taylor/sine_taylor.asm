@@ -54,11 +54,8 @@ main:
     movsd xmm0, [val_90]
     call test_angle
 
-    add rsp, 40
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 test_angle:
     ; На входе в функцию RSP % 16 == 8 (адрес возврата в стеке).

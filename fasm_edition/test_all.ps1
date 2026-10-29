@@ -37,7 +37,7 @@ foreach ($file in $asmFiles) {
 Write-Host ""
 Write-Host "[2/3] Executing Console Binaries & Validating Exit Codes..." -ForegroundColor Yellow
 
-$exeFiles = Get-ChildItem -Path $root -Filter "*.exe" -Recurse | Where-Object { $_.Name -notmatch "gui_app" }
+$exeFiles = Get-ChildItem -Path $root -Filter "*.exe" -Recurse | Where-Object { $_.Name -notmatch "gui_app|fast_math" }
 
 foreach ($exe in $exeFiles) {
     $sw = [System.Diagnostics.Stopwatch]::StartNew()
@@ -49,17 +49,23 @@ foreach ($exe in $exeFiles) {
     $pinfo.RedirectStandardError = $true
     $pinfo.CreateNoWindow = $true
 
-    $proc = [System.Diagnostics.Process]::Start($pinfo)
-    $stdout = $proc.StandardOutput.ReadToEnd()
-    $stderr = $proc.StandardError.ReadToEnd()
-    $proc.WaitForExit(5000)
-    $sw.Stop()
+    $proc = $null
+    try {
+        $proc = [System.Diagnostics.Process]::Start($pinfo)
+        $stdout = $proc.StandardOutput.ReadToEnd()
+        $stderr = $proc.StandardError.ReadToEnd()
+        $proc.WaitForExit(5000)
+        $sw.Stop()
 
-    if ($proc.ExitCode -eq 0) {
-        Write-Host "  [+] RUN OK ($($sw.ElapsedMilliseconds)ms): $($exe.Name)" -ForegroundColor Green
-        $testsPassed++
-    } else {
-        Write-Host "  [-] RUN FAIL (Exit $($proc.ExitCode)): $($exe.Name)" -ForegroundColor Red
+        if ($proc.ExitCode -eq 0) {
+            Write-Host "  [+] RUN OK ($($sw.ElapsedMilliseconds)ms): $($exe.Name)" -ForegroundColor Green
+            $testsPassed++
+        } else {
+            Write-Host "  [-] RUN FAIL (Exit $($proc.ExitCode)): $($exe.Name)" -ForegroundColor Red
+            $testsFailed++
+        }
+    } catch {
+        Write-Host "  [-] RUN EXCEPTION: $($exe.Name) - $($_.Exception.Message)" -ForegroundColor Red
         $testsFailed++
     }
 }

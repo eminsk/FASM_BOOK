@@ -66,11 +66,8 @@ main:
     lea rcx, [szLockFmt]
     call [printf]
 
-    add rsp, 56
-    pop rsi
-    pop rbx
     xor ecx, ecx
-    call [exit]
+    call [ExitProcess]
 
 ; ------------------------------------------------------------------------------
 ; void spin_lock_acquire(int* lock_ptr [RCX])
