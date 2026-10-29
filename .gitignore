@@ -1,0 +1,46 @@
+# Prerequisites
+*.icloud
+*.d
+a.out*
+temp/
+.DS_Store
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+fasm_edition/**/*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Compiled Executables
+*.out
+*.app
+fasm_edition/**/*.exe
+
+# Whitelist standalone FASM compiler tools
+!tools/fasm/FASM.EXE
+!tools/**/*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+
+# Sensitive / local VS Code configs
+.vscode/sftp.json

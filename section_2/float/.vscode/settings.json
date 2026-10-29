@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"iomanip": "cpp",
+		"ios": "cpp"
+	},
+	"cSpell.ignoreWords": [
+		"SIZF"
+	],
+	"cSpell.words": [
+		"dptr",
+		"fptr",
+		"isinf"
+	]
+}

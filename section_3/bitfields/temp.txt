@@ -1,0 +1,5 @@
+SetB:   ldrb    w3, [x0]
+		bfi		w3, w1, 1, 2    // copy bit 0..1 in w1 to bit 1..2 in w3
+        strb    w3, [x0]
+        ret
+		
