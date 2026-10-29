@@ -4,17 +4,6 @@
 # to its canonical version in macros/. Runs scripts/sync-macros.sh and
 # fails the job if the script produced any change that was not already
 # committed.
-#
-# Rationale: the repo ships one copy of each macro file per chapter so
-# that each chapter directory remains self-contained on GitHub. Those
-# copies are derived artifacts; macros/*.S is the single source of
-# truth. This check turns "copies are in sync" from a convention into
-# a machine-enforced invariant, so drift cannot sneak into main.
-#
-# To fix a failure locally:
-#     ./scripts/sync-macros.sh
-#     git add -u
-#     git commit --amend --no-edit    # or a new commit, whichever you prefer
 
 name: Check macro sync
 
@@ -29,8 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Make scripts executable
+        run: chmod +x ./scripts/*.sh || true
+
       - name: Run sync script
-        run: ./scripts/sync-macros.sh
+        run: bash ./scripts/sync-macros.sh
 
       - name: Fail if any chapter copy drifted from canonical
         run: |

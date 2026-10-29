@@ -1,0 +1,25 @@
+name: FASM x64 Windows CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-fasm-suite:
+    name: Build & Test FASM Edition
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Master FASM Automated Test Suite
+        shell: powershell
+        run: |
+          cd fasm_edition
+          .\test_all.ps1

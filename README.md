@@ -5,7 +5,8 @@
 
 [![FASM Version](https://img.shields.io/badge/FASM-v1.73.35-blue.svg?style=for-the-badge&logo=assemblyscript)](https://flatassembler.net/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20x64%20%7C%20ARM64-0078D6.svg?style=for-the-badge&logo=windows)](https://microsoft.com)
-[![Build Status](https://img.shields.io/badge/Build-Passing%20100%25-brightgreen.svg?style=for-the-badge&logo=checkmarx)](./fasm_edition/build_all.bat)
+[![FASM Windows CI](https://img.shields.io/github/actions/workflow/status/eminsk/FASM_BOOK/fasm-ci.yml?branch=main&label=FASM%20Windows%20CI&style=for-the-badge&logo=github)](https://github.com/eminsk/FASM_BOOK/actions)
+[![Macro Sync CI](https://img.shields.io/github/actions/workflow/status/eminsk/FASM_BOOK/check-macros.yml?branch=main&label=Macro%20Sync&style=for-the-badge&logo=github)](https://github.com/eminsk/FASM_BOOK/actions)
 [![Tests Passed](https://img.shields.io/badge/Tests-49%2F49%20PASS-success.svg?style=for-the-badge&logo=pytest)](./fasm_edition/test_all.ps1)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-ZERO%20(Pure%20Native)-orange.svg?style=for-the-badge)](#)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg?style=for-the-badge)](./LICENSE.md)
